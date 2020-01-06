@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/BryanAdamss/webpack4-template-use-webpack-chain/compare/v1.1.0...v1.2.0) (2020-01-06)
+
+
+### Features
+
+* **css:** 支持编译css、编译scss ([433d026](https://github.com/BryanAdamss/webpack4-template-use-webpack-chain/commit/433d026c6048c39c7ed732a1dc0ca6680be19a02))
+
 ## [1.1.0](https://github.com/BryanAdamss/webpack4-template-use-webpack-chain/compare/v1.0.0...v1.1.0) (2020-01-06)
 
 
