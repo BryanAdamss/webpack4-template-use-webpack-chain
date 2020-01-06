@@ -36,6 +36,9 @@ config.module
   .end()
   .use('css')
   .loader('css-loader')
+  .end()
+  .use('postcss')
+  .loader('postcss-loader')
 
 // 编译scss
 config.module
@@ -48,6 +51,9 @@ config.module
   .end()
   .use('css')
   .loader('css-loader')
+  .end()
+  .use('postcss')
+  .loader('postcss-loader')
   .end()
   .use('sass')
   .loader('sass-loader')
