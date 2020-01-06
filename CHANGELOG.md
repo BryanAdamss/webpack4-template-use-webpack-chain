@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/BryanAdamss/webpack4-template-use-webpack-chain/compare/v1.0.0...v1.1.0) (2020-01-06)
+
+
+### Features
+
+* **babel:** 添加编译es ([72ee66e](https://github.com/BryanAdamss/webpack4-template-use-webpack-chain/commit/72ee66e00cc73497c0bf081d9175e95e1416d4d6))
+
 ## 1.0.0 (2020-01-06)
 
 
