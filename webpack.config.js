@@ -17,12 +17,48 @@ config
 config.module
   .rule('compile-es')
   .test(/\.js$/)
-  .include.add(resolve('src'))
+  .include.add(resolve('./src'))
   .end()
   .use('babel')
   .loader('babel-loader')
   .options({
     cacheDirectory: true
+  })
+
+// 编译css
+config.module
+  .rule('compile-css')
+  .test(/\.css$/)
+  .include.add(resolve('./src/assets'))
+  .end()
+  .use('style')
+  .loader('style-loader')
+  .end()
+  .use('css')
+  .loader('css-loader')
+
+// 编译scss
+config.module
+  .rule('compile-sass')
+  .test(/\.scss$/)
+  .include.add(resolve('./src/assets/sass'))
+  .end()
+  .use('style')
+  .loader('style-loader')
+  .end()
+  .use('css')
+  .loader('css-loader')
+  .end()
+  .use('sass')
+  .loader('sass-loader')
+  .end()
+  .use('style-resource')
+  .loader('style-resources-loader')
+  .options({
+    patterns: [
+      resolve('./src/assets/sass/_var.scss'),
+      resolve('./src/assets/sass/_mixins.scss')
+    ]
   })
 
 console.log(config.toString())

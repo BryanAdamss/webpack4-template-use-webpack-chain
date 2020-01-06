@@ -1,0 +1,4 @@
+.c-Btn {
+  @include disabled();
+  color: $mainTone;
+}
