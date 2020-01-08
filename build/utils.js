@@ -11,7 +11,8 @@ const { DIR_VIEWS } = require('./config')
 const jsReg = /\.js$/
 const htmlReg = /\.html?$/
 
-const getEntries = (viewPath = DIR_VIEWS, customEntriesObj) => {
+// 获取入口及html模板的分组
+const getViewGroup = ({ viewPath = DIR_VIEWS, customEntriesObj } = {}) => {
   try {
     // 获取viewPath下所有内容
     const contentList = fs.readdirSync(viewPath)
@@ -32,7 +33,7 @@ const getEntries = (viewPath = DIR_VIEWS, customEntriesObj) => {
           subContentList.forEach(subDirName => {
             const entryFilePath = join(subPathOrFile, subDirName)
 
-            // 入口文件
+            // 读取所有js做为入口文件
             if (jsReg.test(subDirName)) {
               if (acc[dirName] && acc[dirName].entry) {
                 acc[dirName].entry.push(entryFilePath)
@@ -50,13 +51,19 @@ const getEntries = (viewPath = DIR_VIEWS, customEntriesObj) => {
               if (!acc[dirName] || !acc[dirName].template) {
                 acc[dirName] = {
                   ...acc[dirName],
-                  template: [entryFilePath]
+                  template: [
+                    {
+                      filename: basename(entryFilePath),
+                      path: entryFilePath
+                    }
+                  ]
                 }
               }
             }
           })
         }
       } else if (stat.isFile()) {
+        // 读取js文件做为入口
         if (jsReg.test(dirName)) {
           const entryName = basename(dirName, '.js')
 
@@ -84,15 +91,4 @@ const getEntries = (viewPath = DIR_VIEWS, customEntriesObj) => {
   }
 }
 
-module.exports = { getEntries }
-
-// const getFileNameList = path => {
-//   let fileList = []
-//   let dirList = fs.readdirSync(path)
-//   dirList.forEach(item => {
-//     if (item.indexOf('html') > -1) {
-//       fileList.push(item.split('.')[0])
-//     }
-//   })
-//   return fileList
-// }
+module.exports = { getViewGroup, join }
