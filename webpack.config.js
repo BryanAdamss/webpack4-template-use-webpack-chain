@@ -1,9 +1,23 @@
 const path = require('path')
 const Config = require('webpack-chain')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+MiniCssExtractPlugin.__expression = `require('mini-css-extract-plugin')`
+
+console.log(process.env.NODE_ENV)
+const mode = process.env.NODE_ENV
+const devMode = mode !== 'production'
+
 const config = new Config()
 
 const resolve = p => path.join(__dirname, p)
 const resolveModule = name => require.resolve(name)
+
+const useStyleLoader = config => config.use('style').loader('style-loader')
+const useExtractCssLoader = config =>
+  config.use('extract-css').loader(MiniCssExtractPlugin.loader)
+
+// 设置mode
+config.mode(mode)
 
 // 出入口
 config
@@ -11,8 +25,8 @@ config
   .add('./src/main.js')
   .end()
   .output.path(resolve('dist'))
-  .filename('[name].[chunkhash:8].js')
-  .chunkFilename('[name].[chunkhash:8].js')
+  .filename('js/[name].[chunkhash:8].js')
+  .chunkFilename('js/[name].[chunkhash:8].js')
 
 // compile-es
 config.module
@@ -32,9 +46,7 @@ config.module
   .test(/\.css$/)
   .include.add(resolve('./src/assets'))
   .end()
-  .use('style')
-  .loader('style-loader')
-  .end()
+  .when(devMode, useStyleLoader, useExtractCssLoader)
   .use('css')
   .loader('css-loader')
   .end()
@@ -47,9 +59,7 @@ config.module
   .test(/\.scss$/)
   .include.add(resolve('./src/assets/sass'))
   .end()
-  .use('style')
-  .loader('style-loader')
-  .end()
+  .when(devMode, useStyleLoader, useExtractCssLoader)
   .use('css')
   .loader('css-loader')
   .end()
@@ -68,12 +78,19 @@ config.module
     ]
   })
 
-// 添加html-webpack-plugin
+// 添加html-webpack-plugin插件
 config.plugin('html').use(resolveModule('html-webpack-plugin'), [
   {
     filename: 'index.html',
     template: 'index.html',
     inject: true
+  }
+])
+
+// 添加mini-css-extract-plugin插件
+config.plugin('extract-css').use(MiniCssExtractPlugin, [
+  {
+    filename: 'css/[name].[contenthash:8].css'
   }
 ])
 
