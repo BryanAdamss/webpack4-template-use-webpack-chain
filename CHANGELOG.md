@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/BryanAdamss/webpack4-template-use-webpack-chain/compare/v1.3.0...v1.4.0) (2020-01-08)
+
+
+### Features
+
+* **all:** 支持抽取css ([88ed394](https://github.com/BryanAdamss/webpack4-template-use-webpack-chain/commit/88ed394ef056a1f37a23d33fb67d6aa141df9ff8))
+* **webpack.config.js:** 添加dev模式 ([a2ea762](https://github.com/BryanAdamss/webpack4-template-use-webpack-chain/commit/a2ea7620c417365a14aeeec9ae7f2bc22f7ec137))
+
 ## [1.3.0](https://github.com/BryanAdamss/webpack4-template-use-webpack-chain/compare/v1.2.0...v1.3.0) (2020-01-06)
 
 
