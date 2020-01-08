@@ -3,6 +3,7 @@ const Config = require('webpack-chain')
 const config = new Config()
 
 const resolve = p => path.join(__dirname, p)
+const resolveModule = name => require.resolve(name)
 
 // 出入口
 config
@@ -66,6 +67,15 @@ config.module
       resolve('./src/assets/sass/_mixins.scss')
     ]
   })
+
+// 添加html-webpack-plugin
+config.plugin('html').use(resolveModule('html-webpack-plugin'), [
+  {
+    filename: 'index.html',
+    template: 'index.html',
+    inject: true
+  }
+])
 
 console.log(config.toString())
 
