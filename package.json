@@ -14,9 +14,8 @@
     "release:first": "npm run release -- --first-release",
     "release:publish": "git push --follow-tags origin master",
     "release:minAndPub": "npm run release:minor && npm run release:publish",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --process --config ./build/webpack.config.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --process --hot --config ./build/webpack.dev.config.js",
     "prebuild": "npm run clean",
-    "build2": "cross-env NODE_ENV=production webpack --config ./build/webpack.config.js",
     "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.config.js"
   },
   "repository": {

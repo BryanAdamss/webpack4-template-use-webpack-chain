@@ -7,9 +7,15 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 MiniCssExtractPlugin.__expression = `require('mini-css-extract-plugin')`
 
 const baseConfig = require('./webpack.base.config.js')
-const { DIR_ASSETS } = require('./config')
+const { DIR_OUTPUT } = require('./config')
 
+// 设置mode
 baseConfig.mode('production')
+
+// 生产环境使用chunkhash
+baseConfig.output
+  .filename('js/[name].[chunkhash:8].js')
+  .chunkFilename('js/[name].[chunkhash:8].js')
 
 // 使用MiniCssExtractPlugin提取css
 baseConfig.module
