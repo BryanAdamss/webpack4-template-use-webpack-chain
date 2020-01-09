@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/BryanAdamss/webpack4-template-use-webpack-chain/compare/v1.5.0...v1.6.0) (2020-01-09)
+
+
+### Features
+
+* **all:** 添加alias、watchOptions等 ([c3276c0](https://github.com/BryanAdamss/webpack4-template-use-webpack-chain/commit/c3276c07fbe704230bd4889b8b16ea89e7a81ac9))
+* **all:** 添加dev模式 ([ccc71b4](https://github.com/BryanAdamss/webpack4-template-use-webpack-chain/commit/ccc71b48c582f4e2c121e0a36d9cdcc09a8e898a))
+
 ## [1.5.0](https://github.com/BryanAdamss/webpack4-template-use-webpack-chain/compare/v1.4.0...v1.5.0) (2020-01-08)
 
 
