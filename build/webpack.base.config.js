@@ -91,6 +91,38 @@ config.module
     patterns: [join(DIR_SASS, '_var.scss'), join(DIR_SASS, '_mixins.scss')]
   })
 
+// 编译图片
+config.module
+  .rule('compile-img')
+  .test(/\.(png|jpe?g|gif)(\?.*)?$/)
+  .include.add(join(DIR_ASSETS, 'imgs'))
+  .end()
+  .use('url')
+  .loader('url-loader')
+  .options({
+    limit: 10000,
+    name: 'img/[name].[hash:7].[ext]'
+  })
+
+// 编译svg
+config.module
+  .rule('compile-svg')
+  .test(/\.svg$/)
+  .include.add(join(DIR_ASSETS, 'svgs'))
+  .end()
+  .use('svg')
+  .loader('svg-sprite-loader')
+  .end()
+  .use('svgo')
+  .loader('svgo-loader')
+  .options({
+    plugins: [
+      // 还有很多配置，具体可以查看https://github.com/svg/svgo
+      { removeViewBox: false },
+      { removeXMLNS: true }
+    ]
+  })
+
 // 配置别名
 config.resolve.alias
   .set('Sass', DIR_SASS)
