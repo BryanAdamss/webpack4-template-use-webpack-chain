@@ -12,7 +12,7 @@ baseConfig.mode('development')
 baseConfig.output.filename('js/[name].js').chunkFilename('js/[name].js')
 
 // 设置devtool
-baseConfig.devtool('cheap-eval-source-map')
+baseConfig.devtool('cheap-module-eval-source-map')
 
 // 设置端口
 baseConfig.devServer.port('8080').contentBase('./dist')
