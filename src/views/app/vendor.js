@@ -1,1 +1,3 @@
-export const vendorName = 'Its app vendor'
+import { join } from 'Utils/join'
+
+export const getMsg = () => join('Another', 'module', 'loaded!')

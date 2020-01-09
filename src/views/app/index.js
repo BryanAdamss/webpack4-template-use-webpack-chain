@@ -1,3 +1,9 @@
-import { vendorName } from './vendor'
+import { add, sqrt } from 'Utils/math'
 
-console.log(vendorName)
+import(/* webpackChunkName:"app-vendor" */ './vendor').then(getMsg => {
+  console.log(getMsg())
+})
+
+console.log(add)
+
+console.log(sqrt)

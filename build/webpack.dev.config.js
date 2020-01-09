@@ -22,6 +22,4 @@ baseConfig.devServer.watchOptions({
   ignored: /node_modules/
 })
 
-console.log(baseConfig.toString())
-
 module.exports = baseConfig.toConfig()

@@ -43,6 +43,10 @@ baseConfig.plugin('extract-css').use(MiniCssExtractPlugin, [
   }
 ])
 
-console.log(baseConfig.toString())
+// TODO:splitChunks
+// baseConfig.optimization.splitChunks({
+//   // 对所有的包进行拆分
+//   chunks: 'all'
+// })
 
 module.exports = baseConfig.toConfig()
