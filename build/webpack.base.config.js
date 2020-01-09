@@ -16,7 +16,8 @@ const {
   DIR_ASSETS,
   ENABLE_MULTI_ENTRY,
   SINGLE_ENTRY_PATH,
-  SINGLE_TEMPLATE
+  SINGLE_TEMPLATE,
+  DIR_UTILS
 } = require('./config')
 
 if (ENABLE_MULTI_ENTRY) {
@@ -89,5 +90,23 @@ config.module
   .options({
     patterns: [join(DIR_SASS, '_var.scss'), join(DIR_SASS, '_mixins.scss')]
   })
+
+// 配置别名
+config.resolve.alias
+  .set('Sass', DIR_SASS)
+  .set('Assets', DIR_ASSETS)
+  .set('Utils', DIR_UTILS)
+
+// 配置extensions
+config.resolve.extensions.add('.js')
+
+// 配置modules
+config.resolve.modules.add(join(process.cwd(), 'node_modules'))
+
+// 配置mainFields
+config.resolve.mainFields
+  .add('main')
+  .add('module')
+  .add('browser')
 
 module.exports = config

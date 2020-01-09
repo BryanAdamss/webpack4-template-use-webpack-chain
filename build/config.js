@@ -13,6 +13,7 @@ const DIR_OUTPUT = join(cwd, 'dist')
 const DIR_VIEWS = join(DIR_SRC, 'views')
 const DIR_ASSETS = join(DIR_SRC, 'assets')
 const DIR_SASS = join(DIR_SRC, 'sass')
+const DIR_UTILS = join(DIR_SRC, 'utils')
 
 const ENABLE_MULTI_ENTRY = true // 是否启用多入口
 
@@ -31,5 +32,6 @@ module.exports = {
   DIR_SASS,
   ENABLE_MULTI_ENTRY,
   SINGLE_ENTRY_PATH,
-  SINGLE_TEMPLATE
+  SINGLE_TEMPLATE,
+  DIR_UTILS
 }
