@@ -1,3 +1,4 @@
 import { join } from 'Utils/join'
 
-export const getMsg = () => join('Another', 'module', 'loaded!')
+export const getMsg = () =>
+  join('ccccccccccccccccccccccccccccccccccccccccccAnother', 'module', 'loaded!')

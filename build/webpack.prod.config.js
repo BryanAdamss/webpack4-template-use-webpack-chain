@@ -43,10 +43,14 @@ baseConfig.plugin('extract-css').use(MiniCssExtractPlugin, [
   }
 ])
 
-// TODO:splitChunks
-// baseConfig.optimization.splitChunks({
-//   // 对所有的包进行拆分
-//   chunks: 'all'
-// })
+baseConfig.optimization.splitChunks({
+  // 对所有的包(inital+async+node_modules)进行拆分
+  chunks: 'all'
+})
+
+// 提取manifest
+baseConfig.optimization.runtimeChunk({
+  name: 'manifest'
+})
 
 module.exports = baseConfig.toConfig()
